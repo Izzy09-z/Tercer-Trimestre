@@ -1,33 +1,38 @@
 import tkinter as tk
-#---------------------------FUNCIONES---------------------------------
+
+# --------------------------- FUNCIONES ---------------------------------
 def sumar():
     try:
-        n1=float (entrada1.get())
-        n2=float (entrada2.get())
-        resultado.set(n1+n2)
+        n1 = float(entrada1.get())
+        n2 = float(entrada2.get())
+        resultado.set(str(n1 + n2))          # Convertimos a cadena para mostrar
     except ValueError:
         resultado.set("Error")
 
-#-------------------------Ventada Principal----------------------------
-ventana = tk.Tk
-ventana.title("Calculadora Basica")
-ventana.geometry ("250x180") #Tamaño
+# ------------------------- Ventana Principal ---------------------------
+ventana = tk.Tk()                     # <-- Paréntesis
+ventana.title("Calculadora Básica")
+ventana.geometry("250x180")           # Tamaño
 
-#-------------------------Variable-------------------------------
-resultado=tk.StringVar()
+# ------------------------- Variables ---------------------------------
+resultado = tk.StringVar()            # Después de crear la ventana
 
-#----------------------------------Widgets------------------------
-tk.Label(ventana, tex="numero 1: "). pack(padu=5)
-entrada=tk.Entry(ventana)
+# -------------------------- Widgets ----------------------------------
+tk.Label(ventana, text="Número 1: ").pack(pady=5)
+entrada1 = tk.Entry(ventana)
 entrada1.pack()
 
-tk.Label(ventana,text="numero 2: "). pack (pady=5)
-entrada2=tk.Entry(ventana)
+tk.Label(ventana, text="Número 2: ").pack(pady=5)
+entrada2 = tk.Entry(ventana)
 entrada2.pack()
 
-tk.Button (ventana, text="suma" , command=sumar). pack(pady=5)
-tk.Label(ventana, text="Resultado: "). pack
-tk.Label(ventana, textvariable=resultado, fg="blue" ,font=("Arial",12)). pack()
+tk.Button(ventana, text="Suma", command=sumar).pack(pady=5)
 
-#--------------------Loop Principal------------------------
+tk.Label(ventana, text="Resultado: ").pack()
+tk.Label(ventana,
+         textvariable=resultado,
+         fg="blue",
+         font=("Arial", 12)).pack(pady=5)
+
+# -------------------- Loop Principal -------------------------------
 ventana.mainloop()
